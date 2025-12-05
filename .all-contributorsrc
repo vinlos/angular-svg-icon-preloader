@@ -14,7 +14,15 @@
 			"avatar_url": "https://avatars3.githubusercontent.com/u/2006222?v=4",
 			"profile": "https://github.com/pjlamb12",
 			"contributions": ["code", "doc", "test"]
+		},
+		{
+			"login": "vinlos",
+			"name": "Vincenzo Losito",
+			"avatar_url": "https://avatars.githubusercontent.com/u/1380443?v=4",
+			"profile": "https://www.fantastica.uno/",
+			"contributions": ["code", "maintenance", "platform"]
 		}
 	],
 	"contributorsPerLine": 7
 }
+

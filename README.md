@@ -80,15 +80,20 @@ At this point, everything is done. To use the `academic-cap` icon in the above m
 
 ## Contributors ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+This is a fork of [angular-svg-icon-preloader](https://github.com/pjlamb12/angular-svg-icon-preloader) developed by Preston Lamb [@pjlamb12](https://github.com/pjlamb12) who initially created and maintained this project for a quite a long time.
+
+Please, join the development with new ideas, bug fixes, maintenance and you'll earn a mention in the following list:
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
-  <tr>
-    <td align="center"><a href="https://github.com/pjlamb12"><img src="https://avatars3.githubusercontent.com/u/2006222?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Preston Lamb</b></sub></a><br /><a href="https://github.com/pjlamb12/angular-svg-icon-preloader/commits?author=pjlamb12" title="Code">💻</a> <a href="https://github.com/pjlamb12/angular-svg-icon-preloader/commits?author=pjlamb12" title="Documentation">📖</a> <a href="https://github.com/pjlamb12/angular-svg-icon-preloader/commits?author=pjlamb12" title="Tests">⚠️</a></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/pjlamb12"><img src="https://avatars3.githubusercontent.com/u/2006222?v=4?s=100" width="100px;" alt="Preston Lamb"/><br /><sub><b>Preston Lamb</b></sub></a><br /><a href="https://github.com/pjlamb12/angular-svg-icon-preloader/commits?author=pjlamb12" title="Code">💻</a> <a href="https://github.com/pjlamb12/angular-svg-icon-preloader/commits?author=pjlamb12" title="Documentation">📖</a> <a href="https://github.com/pjlamb12/angular-svg-icon-preloader/commits?author=pjlamb12" title="Tests">⚠️</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.fantastica.uno/"><img src="https://avatars.githubusercontent.com/u/1380443?v=4?s=100" width="100px;" alt="Vincenzo Losito"/><br /><sub><b>Vincenzo Losito</b></sub></a><br /><a href="https://github.com/pjlamb12/angular-svg-icon-preloader/commits?author=vinlos" title="Code">💻</a> <a href="#maintenance-vinlos" title="Maintenance">🚧</a> <a href="#platform-vinlos" title="Packaging/porting to new platform">📦</a></td>
+    </tr>
+  </tbody>
 </table>
 
 <!-- markdownlint-restore -->
