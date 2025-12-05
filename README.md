@@ -26,11 +26,11 @@ Angular SVG Icon Preloader is a library to be used in conjunction with the [angu
 
 ### NPM
 
-`npm install angular-svg-icon-preloader`
+`npm install @vinlos/angular-svg-icon-preloader`
 
 ### Yarn
 
-`yarn add angular-svg-icon-preloader`
+`yarn add @vinlos/angular-svg-icon-preloader`
 
 ## Usage
 
