@@ -1,5 +1,5 @@
 {
-	"name": "angular-svg-icon-preloader",
+	"name": "@vinlos/angular-svg-icon-preloader",
 	"version": "20.0.0",
 	"homepage": "https://github.com/vinlos/angular-svg-icon-preloader",
 	"description": "An Angular library that pre loads SVG icons for use with angular-svg-icon",

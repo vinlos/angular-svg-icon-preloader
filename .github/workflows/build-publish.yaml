@@ -82,5 +82,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           echo "Publishing version $VERSION to npm"
+          npm run copy-readme
           cd dist/libs/angular-svg-icon-preloader
           npm publish --access public

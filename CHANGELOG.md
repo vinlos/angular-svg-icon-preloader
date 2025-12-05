@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 20.0.1
+
+* migrated to Angular 20
+* added support for GitHub actions to build, publish and check quality
+* restored Karma / Jasmine as preparation for migration to Vitest (not working yet)
+* deprecation of Nx in favour of Angular CLI
+
 ## 1.0.0 (2020-12-08)
 
 
