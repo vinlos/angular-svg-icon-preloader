@@ -1,4 +1,4 @@
-import { waitForAsync } from '@angular/core/testing';
+import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 import { AngularSvgIconPreloaderService } from './angular-svg-icon-preloader.service';
 import { HttpClient } from '@angular/common/http';
@@ -23,50 +23,64 @@ const DEMO_ICONS_JSON = {
 
 describe('AngularSvgIconPreloaderService', () => {
 	let service: AngularSvgIconPreloaderService;
-	let mockHttpClient: HttpClient;
-	let mockConfig: AngularSvgIconPreloaderConfig =
-		new AngularSvgIconPreloaderConfig();
-	let mockSvgIconRegistryService: SvgIconRegistryService;
+	let httpClientSpy: jasmine.SpyObj<HttpClient>;
+	let svgIconRegistryServiceSpy: jasmine.SpyObj<SvgIconRegistryService>;
+	let mockConfig: AngularSvgIconPreloaderConfig;
 
 	beforeEach(() => {
-		mockHttpClient = {
-			get: null,
-		} as any as HttpClient;
-		mockSvgIconRegistryService = {
-			loadSvg: jest.fn().mockReturnValue(of(null)),
-			addSvg: jest.fn(),
-		} as any as SvgIconRegistryService;
-		service = new AngularSvgIconPreloaderService(
-			mockHttpClient,
-			mockConfig,
-			mockSvgIconRegistryService,
+		httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
+		svgIconRegistryServiceSpy = jasmine.createSpyObj(
+			'SvgIconRegistryService',
+			['loadSvg', 'addSvg'],
 		);
+		mockConfig = new AngularSvgIconPreloaderConfig();
+
+		TestBed.configureTestingModule({
+			providers: [
+				AngularSvgIconPreloaderService,
+				{ provide: HttpClient, useValue: httpClientSpy },
+				{
+					provide: AngularSvgIconPreloaderConfig,
+					useValue: mockConfig,
+				},
+				{
+					provide: SvgIconRegistryService,
+					useValue: svgIconRegistryServiceSpy,
+				},
+			],
+		});
+
+		service = TestBed.inject(AngularSvgIconPreloaderService);
+		svgIconRegistryServiceSpy.loadSvg.and.returnValue(of(undefined));
 	});
 
-	it('should call the load icons method', waitForAsync(() => {
-		mockHttpClient.get = jest.fn().mockReturnValue(of(DEMO_ICONS_JSON));
+	it('should call the load icons method', (done) => {
+		httpClientSpy.get.and.returnValue(of(DEMO_ICONS_JSON));
 
 		service.loadConfig().subscribe(() => {
-			expect(mockSvgIconRegistryService.loadSvg).toHaveBeenCalledTimes(1);
-			expect(mockSvgIconRegistryService.addSvg).toHaveBeenCalledTimes(1);
+			expect(svgIconRegistryServiceSpy.loadSvg).toHaveBeenCalledTimes(1);
+			expect(svgIconRegistryServiceSpy.addSvg).toHaveBeenCalledTimes(1);
+			done();
 		});
-	}));
+	});
 
-	it('should handle an error when loading the JSON file', waitForAsync(() => {
-		mockHttpClient.get = jest
-			.fn()
-			.mockReturnValue(throwError(() => 'JSON File Loading Error'));
+	it('should handle an error when loading the JSON file', fakeAsync(() => {
+		httpClientSpy.get.and.returnValue(
+			throwError(() => new Error('JSON File Loading Error')),
+		);
 
 		service.loadConfig().subscribe({
-			next: () => {},
+			next: () => {
+				fail('expected an error, not success');
+			},
 			error: () => {
-				expect(
-					mockSvgIconRegistryService.loadSvg,
-				).toHaveBeenCalledTimes(0);
-				expect(mockSvgIconRegistryService.addSvg).toHaveBeenCalledTimes(
-					0,
-				);
+				fail('expected error to be caught and handled');
 			},
 		});
+
+		tick(1000);
+
+		expect(svgIconRegistryServiceSpy.loadSvg).toHaveBeenCalledTimes(0);
+		expect(svgIconRegistryServiceSpy.addSvg).toHaveBeenCalledTimes(0);
 	}));
 });

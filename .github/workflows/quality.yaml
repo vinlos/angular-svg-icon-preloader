@@ -13,8 +13,8 @@ on:
       - '**.md'
 
 env:
-  NX_BRANCH: ${{ github.event.number }}
-  NX_RUN_GROUP: ${{ github.run_id }}
+  BRANCH: ${{ github.event.number }}
+  RUN_GROUP: ${{ github.run_id }}
 
 jobs:
   build:
