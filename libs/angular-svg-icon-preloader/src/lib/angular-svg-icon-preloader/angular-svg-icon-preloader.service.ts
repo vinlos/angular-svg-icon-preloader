@@ -4,8 +4,8 @@ import { SvgIconRegistryService } from 'angular-svg-icon';
 import { EMPTY, Subject } from 'rxjs';
 import { catchError, take, tap } from 'rxjs/operators';
 import { AngularSvgIconPreloaderConfig } from '../angular-svg-icon-preloader-config.class';
-import { CustomIconData, IconImageFile } from '../icon.interface';
 import { IconConfig } from '../icon-config.interface';
+import { CustomIconData, IconImageFile } from '../icon.interface';
 
 @Injectable({
 	providedIn: 'root',

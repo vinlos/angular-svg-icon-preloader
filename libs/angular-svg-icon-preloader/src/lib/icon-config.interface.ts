@@ -1,4 +1,4 @@
-import { IconImageFile, CustomIconData } from './icon.interface';
+import { CustomIconData, IconImageFile } from './icon.interface';
 
 export interface IconConfig {
 	iconImageFiles: IconImageFile[];

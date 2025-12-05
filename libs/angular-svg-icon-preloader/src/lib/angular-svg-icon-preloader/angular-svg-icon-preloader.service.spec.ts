@@ -1,9 +1,9 @@
-import { TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { of, throwError } from 'rxjs';
-import { AngularSvgIconPreloaderService } from './angular-svg-icon-preloader.service';
 import { HttpClient } from '@angular/common/http';
-import { AngularSvgIconPreloaderConfig } from '../angular-svg-icon-preloader-config.class';
+import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { SvgIconRegistryService } from 'angular-svg-icon';
+import { of, throwError } from 'rxjs';
+import { AngularSvgIconPreloaderConfig } from '../angular-svg-icon-preloader-config.class';
+import { AngularSvgIconPreloaderService } from './angular-svg-icon-preloader.service';
 
 const DEMO_ICONS_JSON = {
 	iconImageFiles: [
