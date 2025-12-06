@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 21.0.0
+
+* upgraded to Angular 21
+
 ## 20.1.0
 
 * completely removed Nx
