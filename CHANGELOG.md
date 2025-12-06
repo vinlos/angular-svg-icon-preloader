@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 * upgraded to Angular 21
 
-## 20.1.0
+## 20.1.3
 
 * completely removed Nx
 * fixed issues with unit tests
