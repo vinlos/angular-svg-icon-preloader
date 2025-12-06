@@ -50,7 +50,7 @@ jobs:
           VERSION="${BASE_VERSION}.${PATCH_VERSION}"
 
           # Prepare the new version and create the tag
-          npm version $VERSION --workspaces true --include-workspace-root true --workspaces-update false --git-tag-version false
+          npm version $VERSION --workspaces true --include-workspace-root true --workspaces-update true --git-tag-version false
 
           # Share version with next steps
           echo "VERSION=$VERSION" >> $GITHUB_ENV
