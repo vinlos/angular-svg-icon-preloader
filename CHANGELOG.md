@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## 20.1.0
+## 20.1.3
 
 * completely removed Nx
 * fixed issues with unit tests
