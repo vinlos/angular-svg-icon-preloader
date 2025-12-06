@@ -2,11 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## 21.0.0
+## 21.0.2
 
 * upgraded to Angular 21
+* fixed unit tests in CI
 
-## 20.1.0
+## 20.1.4
 
 * completely removed Nx
 * fixed issues with unit tests
