@@ -16,7 +16,7 @@ export class AngularSvgIconPreloaderService {
 
 	private readonly configUrl: string = './assets/icons.json';
 	private iconsFileData: IconConfig = { customIcons: [], iconImageFiles: [] };
-	public configSubject: Subject<any> = new Subject<any>();
+	public configSubject: Subject<IconConfig> = new Subject<IconConfig>();
 
 	constructor() {
 		const config = inject(AngularSvgIconPreloaderConfig, {

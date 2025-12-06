@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 20.1.0
+
+* completely removed Nx
+* fixed issues with unit tests
+* integrated Prettier with a git pre-commit hook
+* migrated to eslint flat config files
+
 ## 20.0.0
 
 * migrated to Angular 20
