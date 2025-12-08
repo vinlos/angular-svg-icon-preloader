@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 20.1.4
+
+* fixed unit tests in CI
+
 ## 20.1.3
 
 * completely removed Nx

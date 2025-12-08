@@ -2,7 +2,6 @@
 	"name": "@vinlos/angular-svg-icon-preloader",
 	"version": "0.0.0",
 	"license": "MIT",
-	"type": "module",
 	"scripts": {
 		"ng": "nx",
 		"start": "ng serve",
