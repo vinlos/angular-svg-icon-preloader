@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 22.0.1
+
+* upgraded to Angular 22
+* migrated to Vitest
+* completed migration to standalone components including app bootstrap
+* removed unnecessary dependencies
+
 ## 21.0.2
 
 * upgraded to Angular 21

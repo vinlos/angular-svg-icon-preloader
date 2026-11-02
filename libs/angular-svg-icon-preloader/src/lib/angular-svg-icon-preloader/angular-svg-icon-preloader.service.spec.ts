@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { of, throwError } from 'rxjs';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { AngularSvgIconPreloaderConfig } from '../angular-svg-icon-preloader-config.class';
 import { AngularSvgIconPreloaderService } from './angular-svg-icon-preloader.service';
 
@@ -23,64 +24,70 @@ const DEMO_ICONS_JSON = {
 
 describe('AngularSvgIconPreloaderService', () => {
 	let service: AngularSvgIconPreloaderService;
-	let httpClientSpy: jasmine.SpyObj<HttpClient>;
-	let svgIconRegistryServiceSpy: jasmine.SpyObj<SvgIconRegistryService>;
+	let httpClientSpy: HttpClient;
+	let svgIconRegistryServiceSpy: SvgIconRegistryService;
 	let mockConfig: AngularSvgIconPreloaderConfig;
 
 	beforeEach(() => {
-		httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
-		svgIconRegistryServiceSpy = jasmine.createSpyObj(
-			'SvgIconRegistryService',
-			['loadSvg', 'addSvg'],
-		);
 		mockConfig = new AngularSvgIconPreloaderConfig();
 
 		TestBed.configureTestingModule({
 			providers: [
 				AngularSvgIconPreloaderService,
-				{ provide: HttpClient, useValue: httpClientSpy },
+				{
+					provide: HttpClient,
+					useValue: {
+						get: vi.fn().mockName('HttpClient.get'),
+					},
+				},
 				{
 					provide: AngularSvgIconPreloaderConfig,
 					useValue: mockConfig,
 				},
 				{
 					provide: SvgIconRegistryService,
-					useValue: svgIconRegistryServiceSpy,
+					useValue: {
+						loadSvg: vi
+							.fn()
+							.mockReturnValue(of(undefined))
+							.mockName('SvgIconRegistryService.loadSvg'),
+						addSvg: vi
+							.fn()
+							.mockName('SvgIconRegistryService.addSvg'),
+					},
 				},
 			],
 		});
 
 		service = TestBed.inject(AngularSvgIconPreloaderService);
-		svgIconRegistryServiceSpy.loadSvg.and.returnValue(of(undefined));
+		httpClientSpy = TestBed.inject(HttpClient);
+		svgIconRegistryServiceSpy = TestBed.inject(SvgIconRegistryService);
 	});
 
-	it('should call the load icons method', (done) => {
-		httpClientSpy.get.and.returnValue(of(DEMO_ICONS_JSON));
+	it('should call the load icons method', async () => {
+		vi.spyOn(httpClientSpy, 'get').mockReturnValue(of(DEMO_ICONS_JSON));
 
 		service.loadConfig().subscribe(() => {
 			expect(svgIconRegistryServiceSpy.loadSvg).toHaveBeenCalledTimes(1);
 			expect(svgIconRegistryServiceSpy.addSvg).toHaveBeenCalledTimes(1);
-			done();
 		});
 	});
 
-	it('should handle an error when loading the JSON file', fakeAsync(() => {
-		httpClientSpy.get.and.returnValue(
+	it('should handle an error when loading the JSON file', () => {
+		vi.spyOn(httpClientSpy, 'get').mockReturnValue(
 			throwError(() => new Error('JSON File Loading Error')),
 		);
 
 		service.loadConfig().subscribe({
 			next: () => {
-				fail('expected an error, not success');
+				expect.fail('expected an error, not success');
 			},
 			error: () => {
-				fail('expected error to be caught and handled');
+				expect.fail('expected error to be caught and handled');
 			},
 		});
 
-		tick(1000);
-
 		expect(svgIconRegistryServiceSpy.loadSvg).toHaveBeenCalledTimes(0);
 		expect(svgIconRegistryServiceSpy.addSvg).toHaveBeenCalledTimes(0);
-	}));
+	});
 });

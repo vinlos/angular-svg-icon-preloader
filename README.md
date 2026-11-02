@@ -24,13 +24,13 @@ Angular SVG Icon Preloader is a library to be used in conjunction with the [angu
 
 ## Installation
 
-### NPM
+### npm
 
 `npm install @vinlos/angular-svg-icon-preloader`
 
-### Yarn
+### Angular CLI
 
-`yarn add @vinlos/angular-svg-icon-preloader`
+`ng add @vinlos/angular-svg-icon-preloader`
 
 ## Usage
 
@@ -63,11 +63,15 @@ Once you've defined your JSON file with the icon information, just import the an
 ```ts
 @NgModule({
 	imports: [
-		AngularSvgIconModule.forRoot(), // angular-svg-icon library module
+		SvgIconComponent,
 		AngularSvgIconPreloaderModule.forRoot({
 			configUrl: './assets/json/icons.json',
 		}),
-	]
+	],
+  providers: [
+    ...,
+    provideAngularSvgIcon()
+  ]
 })
 ```
 
@@ -102,3 +106,4 @@ Please, join the development with new ideas, bug fixes, maintenance and you'll e
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+

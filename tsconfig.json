@@ -13,6 +13,7 @@
 		"module": "esnext",
 		"skipLibCheck": true,
 		"skipDefaultLibCheck": true,
+		"ignoreDeprecations": "6.0",
 		"baseUrl": ".",
 		"paths": {
 			"angular-svg-icon-preloader": [
