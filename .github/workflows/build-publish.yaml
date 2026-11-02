@@ -84,4 +84,4 @@ jobs:
           echo "Publishing version $VERSION to npm"
           cp ./README.md ./dist/libs/angular-svg-icon-preloader
           cd dist/libs/angular-svg-icon-preloader
-          npm publish --access public
+          npm stage publish
